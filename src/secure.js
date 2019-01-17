@@ -1,5 +1,4 @@
 var crypto = require('crypto');
-var hex = require('./hex');
 var ethUtil = require('ethereumjs-util');
 
 var Secure = function Secure() { };
