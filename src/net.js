@@ -4,14 +4,15 @@ var hex = require('./hex');
 var Net = function Net() { };
 
 Net.getNetName = function (chainId) {
+  if (!chainId) return null;
   chainId = chainId.toString();
-  var network = '';
+  var network = null;
   switch (chainId.toLowerCase()) {
     case '1':
-      network = '';
+      network = 'mainnet';
       break;
     case 'mainnet':
-      network = '';
+      network = 'mainnet';
       break;
     case '3':
       network = 'ropsten';
@@ -32,7 +33,7 @@ Net.getNetName = function (chainId) {
       network = 'kovan';
       break;
     default:
-      network = '';
+      network = null;
   }
   return network;
 }
