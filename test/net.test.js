@@ -9,6 +9,7 @@ const net5 = '42'; // Result: 'kovan'
 const net6 = '426'; // Result: ''
 
 const address = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
+const fake_address = '0x27306090abaB3A6e1400e9345bC60c78a8BEf57';
 const _address = address.toLowerCase();
 
 describe('Net lib', function () {
@@ -27,6 +28,20 @@ describe('Net lib', function () {
       assert.equal(re5, 'kovan');
       let re6 = kamUtil.net.getNetName(net6);
       assert.equal(re6, null);
+    });
+  });
+
+  describe('isAddress()', function () {
+    it('true address', function () {
+      let re = kamUtil.net.isAddress(address);
+      assert.equal(re, true);
+    });
+  });
+
+  describe('isAddress()', function () {
+    it('false address', function () {
+      let re = kamUtil.net.isAddress(fake_address);
+      assert.equal(re, false);
     });
   });
 

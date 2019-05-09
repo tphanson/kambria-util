@@ -1,5 +1,8 @@
+var Web3 = require('web3');
 var ethUtil = require('ethereumjs-util');
 var hex = require('./hex');
+
+var web3 = new Web3();
 
 var Net = function Net() { };
 
@@ -42,6 +45,10 @@ Net.getNetName = function (chainId) {
       network = null;
   }
   return network;
+}
+
+Net.isAddress=function(address){
+  return web3.isAddress(address);
 }
 
 Net.formalizeAddress = function (address) {

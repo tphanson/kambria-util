@@ -12,8 +12,8 @@
   "author": "Tu Phan",
   "license": "ISC",
   "dependencies": {
-    "bignumber.js": "git+https://github.com/frozeman/bignumber.js-nolookahead.git",
-    "ethereumjs-util": "^6.0.0"
+    "ethereumjs-util": "^6.0.0",
+    "web3": "^0.20.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
