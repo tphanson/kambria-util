@@ -16,17 +16,17 @@ describe('Net lib', function () {
   describe('getNetName()', function () {
     it('get name of the network', function () {
       let re1 = kamUtil.net.getNetName(net1);
-      assert.equal(re1, '');
+      assert.equal(re1, 'mainnet');
       let re2 = kamUtil.net.getNetName(net2);
       assert.equal(re2, 'rinkeby');
       let re3 = kamUtil.net.getNetName(net3);
       assert.equal(re3, 'ropsten');
       let re4 = kamUtil.net.getNetName(net4);
-      assert.equal(re4, '');
+      assert.equal(re4, null);
       let re5 = kamUtil.net.getNetName(net5);
       assert.equal(re5, 'kovan');
       let re6 = kamUtil.net.getNetName(net6);
-      assert.equal(re6, '');
+      assert.equal(re6, null);
     });
   });
 

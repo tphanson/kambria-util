@@ -26,6 +26,12 @@ Net.getNetName = function (chainId) {
     case 'rinkeby':
       network = 'rinkeby';
       break;
+    case '5':
+      network = 'goerli';
+      break;
+    case 'goerli':
+      network = 'goerli';
+      break;
     case '42':
       network = 'kovan';
       break;
