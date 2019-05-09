@@ -89,6 +89,18 @@ import generator from '@kambria/kambria-util';
     * name: <string> lowercase network name
     ```
 
+  * isAddress(): validate address format.
+
+    ```
+    Params:
+
+    * address: <string> address
+
+    Returns:
+
+    * isValid: <boolean> is valid?
+    ```
+
   * formalizeAddress(): validate and return address.
 
     ```
