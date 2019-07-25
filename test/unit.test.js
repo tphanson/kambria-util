@@ -11,15 +11,9 @@ const WKAT3 = 9.89067258461355e+27;
 const BKAT1 = '10';
 const BKAT2 = '1123456';
 const BKAT3 = '9890672584.61355';
-<<<<<<< HEAD
-const WBKAT1 = '1000000000';
-const WBKAT2 = '112345600000000';
-const WBKAT3 = 989067258461355000;
-=======
 const JBKAT1 = '1000000000';
 const JBKAT2 = '112345600000000';
 const JBKAT3 = 989067258461355000;
->>>>>>> master
 
 const ETH1 = '10.11';
 const ETH2 = '10.123456789';
@@ -72,49 +66,6 @@ describe('Unit lib', function () {
     it(`convert ${KAT3} KAT to WKAT`, function () {
       let re = kamUtil.unit.kat2WKAT(KAT3);
       assert.equal(re, WKAT3);
-<<<<<<< HEAD
-      assert.equal(typeof re, 'string');
-    });
-  });
-
-  describe('wbkat2BKAT()', function () {
-    it(`convert ${WBKAT1} WBKAT to BKAT`, function () {
-      let re = kamUtil.unit.wbkat2BKAT(WBKAT1);
-      assert.equal(re, BKAT1);
-      assert.equal(typeof re, 'string');
-    });
-
-    it(`convert ${WBKAT2} WBKAT to BKAT`, function () {
-      let re = kamUtil.unit.wbkat2BKAT(WBKAT2);
-      assert.equal(re, BKAT2);
-      assert.equal(typeof re, 'string');
-    });
-
-    it(`convert ${WBKAT3} WBKAT to BKAT`, function () {
-      let re = kamUtil.unit.wbkat2BKAT(WBKAT3);
-      assert.equal(re, BKAT3);
-      assert.equal(typeof re, 'string');
-    });
-  });
-
-  describe('bkat2WBKAT()', function () {
-    it(`convert ${BKAT1} BKAT to WBKAT`, function () {
-      let re = kamUtil.unit.bkat2WBKAT(BKAT1);
-      assert.equal(re, WBKAT1);
-      assert.equal(typeof re, 'string');
-    });
-
-    it(`convert ${BKAT2} BKAT to WBKAT`, function () {
-      let re = kamUtil.unit.bkat2WBKAT(BKAT2);
-      assert.equal(re, WBKAT2);
-      assert.equal(typeof re, 'string');
-    });
-
-    it(`convert ${BKAT3} BKAT to WBKAT`, function () {
-      let re = kamUtil.unit.bkat2WBKAT(BKAT3);
-      assert.equal(re, WBKAT3);
-=======
->>>>>>> master
       assert.equal(typeof re, 'string');
     });
   });
