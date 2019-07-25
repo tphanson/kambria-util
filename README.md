@@ -129,12 +129,36 @@ import generator from '@kambria/kambria-util';
 
 * Unit lib: `kamUtil.unit`
 
-  * wkat2KAT(): convert WKAT to KAT.
+  * wei2ETH(): convert WEI to ETH.
 
     ```
     Params:
 
-    * wkat: <number/string> the number of wei KAT
+    * wei: <number/string> the number of WEI
+
+    Returns:
+
+    * eth: <string> the number of ETH
+    ```
+
+  * eth2WEI(): convert ETH to WEI.
+
+    ```
+    Params:
+
+    * eth: <number/string> the number of ETH
+
+    Returns:
+
+    * wei: <string> the number of WEI
+    ```
+
+  * wkat2KAT(): convert Wei KAT (WKAT) to KAT.
+
+    ```
+    Params:
+
+    * wkat: <number/string> the number of WKAT
 
     Returns:
 
@@ -150,7 +174,31 @@ import generator from '@kambria/kambria-util';
 
     Returns:
 
-    * wkat: <string> the number of wei KAT
+    * wkat: <string> the number of WKAT
+    ```
+
+  * wbkat2BKAT(): convert Wei Binance KAT (WBKAT) to Binance KAT (BKAT).
+
+    ```
+    Params:
+
+    * wbkat: <number/string> the number of WBKAT
+
+    Returns:
+
+    * bkat: <string> the number of BKAT
+    ```
+
+  * bkat2WBKAT(): convert BKAT to WBKAT.
+
+    ```
+    Params:
+
+    * bkat: <number/string> the number of BKAT
+
+    Returns:
+
+    * wbkat: <string> the number of WBKAT
     ```
 
 ### Examples
