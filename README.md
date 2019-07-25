@@ -153,6 +153,30 @@ import generator from '@kambria/kambria-util';
     * wei: <string> the number of WEI
     ```
 
+  * jager2BNB(): convert JAGER to BNB.
+
+    ```
+    Params:
+
+    * jager: <number/string> the number of JAGER
+
+    Returns:
+
+    * bnb: <string> the number of BNB
+    ```
+
+  * bnb2JAGER(): convert BNB to JAGER.
+
+    ```
+    Params:
+
+    * bnb: <number/string> the number of BNB
+
+    Returns:
+
+    * jager: <string> the number of JAGER
+    ```
+
   * wkat2KAT(): convert Wei KAT (WKAT) to KAT.
 
     ```
@@ -177,19 +201,19 @@ import generator from '@kambria/kambria-util';
     * wkat: <string> the number of WKAT
     ```
 
-  * wbkat2BKAT(): convert Wei Binance KAT (WBKAT) to Binance KAT (BKAT).
+  * jbkat2BKAT(): convert Jager Binance KAT (JBKAT) to Binance KAT (BKAT).
 
     ```
     Params:
 
-    * wbkat: <number/string> the number of WBKAT
+    * jbkat: <number/string> the number of JBKAT
 
     Returns:
 
     * bkat: <string> the number of BKAT
     ```
 
-  * bkat2WBKAT(): convert BKAT to WBKAT.
+  * bkat2JBKAT(): convert BKAT to JBKAT.
 
     ```
     Params:
@@ -198,7 +222,7 @@ import generator from '@kambria/kambria-util';
 
     Returns:
 
-    * wbkat: <string> the number of WBKAT
+    * jbkat: <string> the number of JBKAT
     ```
 
 ### Examples
