@@ -37,6 +37,18 @@ import generator from '@kambria/kambria-util';
 
 * Hex lib: `kamUtil.hex`
 
+  * toBigNumber(): convert hex string to big number.
+
+    ```
+    Params:
+
+    * hexString: <string> hex string
+
+    Returns:
+
+    * bigNumber: <BigNumber> big number
+    ```
+
   * padHex(): add prefix `0x` to hex string.
 
     ```

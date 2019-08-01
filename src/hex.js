@@ -1,4 +1,12 @@
+var Web3 = require('web3');
+var web3 = new Web3();
+
+
 var Hex = function Hex() { };
+
+Hex.toBigNumber = function (hex) {
+  return web3.toBigNumber(hex);
+}
 
 Hex.padHex = function (hex) {
   if (!hex) return null;

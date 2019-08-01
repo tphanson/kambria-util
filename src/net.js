@@ -1,5 +1,6 @@
 var Web3 = require('web3');
 var ethUtil = require('ethereumjs-util');
+var abi = require('ethereumjs-abi');
 var hex = require('./hex');
 
 var web3 = new Web3();
@@ -47,7 +48,7 @@ Net.getNetName = function (chainId) {
   return network;
 }
 
-Net.isAddress=function(address){
+Net.isAddress = function (address) {
   return web3.isAddress(address);
 }
 
@@ -55,6 +56,30 @@ Net.formalizeAddress = function (address) {
   if (typeof address !== 'string') throw new Error('Function only excepts string.');
   if (!ethUtil.isValidAddress(address)) return null;
   return hex.padHex(address.toLowerCase());
+}
+
+Net.parseKambriaTransaction = function (tx) {
+  var { data, from } = tx;
+  var contract = tx.to;
+
+  var sig = data.slice(0, 10);
+  var encode = data.slice(10);
+  if (sig == '0xa9059cbb') {
+    var name = 'transfer';
+    var decode = abi.rawDecode(['address', 'uint256'], Buffer.from(encode, 'hex'));
+    var to = hex.padHex(decode[0]);
+    var amount = decode[1];
+    return { from, to, amount, name, contract }
+  }
+  else if (sig == '0x23b872dd') {
+    var name = 'transferFrom';
+    var decode = abi.rawDecode(['address', 'address', 'uint256'], Buffer.from(encode, 'hex'));
+    var approver = hex.padHex(decode[0]);
+    var to = hex.padHex(decode[1]);
+    var amount = decode[2];
+    return { from, approver, to, amount, name, contract }
+  }
+  else return null;
 }
 
 module.exports = Net;
