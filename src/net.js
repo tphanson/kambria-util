@@ -4,48 +4,103 @@ var abi = require('ethereumjs-abi');
 var hex = require('./hex');
 
 var web3 = new Web3();
-
-var Net = function Net() { };
-
-Net.getNetName = function (chainId) {
-  if (!chainId) return null;
-  chainId = chainId.toString();
-  var network = null;
-  switch (chainId.toLowerCase()) {
-    case '1':
-      network = 'mainnet';
-      break;
-    case 'mainnet':
-      network = 'mainnet';
-      break;
-    case '3':
-      network = 'ropsten';
-      break;
-    case 'ropsten':
-      network = 'ropsten';
-      break;
-    case '4':
-      network = 'rinkeby';
-      break;
-    case 'rinkeby':
-      network = 'rinkeby';
-      break;
-    case '5':
-      network = 'goerli';
-      break;
-    case 'goerli':
-      network = 'goerli';
-      break;
-    case '42':
-      network = 'kovan';
-      break;
-    case 'kovan':
-      network = 'kovan';
-      break;
-    default:
-      network = null;
+const CODE = '55b8fc1234d845ffbea5da26f9ae70f5';
+const RPC = {
+  MAINNET: {
+    id: 1,
+    name: 'mainnet',
+    rpc: 'https://mainnet.infura.io/v3/' + CODE
+  },
+  ROPSTEN: {
+    id: 3,
+    name: 'ropsten',
+    rpc: 'https://ropsten.infura.io/v3/' + CODE
+  },
+  RINKEBY: {
+    id: 4,
+    name: 'rinkeby',
+    rpc: 'https://rinkeby.infura.io/v3/' + CODE
+  },
+  GOERLI: {
+    id: 5,
+    name: 'goerli',
+    rpc: 'https://goerli.infura.io/v3/' + CODE
+  },
+  KOVAN: {
+    id: 42,
+    name: 'kovan',
+    rpc: 'https://kovan.infura.io/v3/' + CODE
+  },
+  DEFAULT: {
+    id: '*',
+    name: 'privatenet',
+    rpc: 'http://localhost:9545'
   }
-  return network;
+}
+
+var Net = function () { };
+
+Net.createClient = function (network) {
+  let rpc = Net.getRPC(network);
+  return new Web3(new Web3.providers.HttpProvider(rpc));
+}
+
+Net.getRPC = function (network) {
+  if (!network) network = '*';
+  else network = network.toString();
+  switch (network.toLowerCase()) {
+    case '1':
+      return RPC.MAINNET.rpc;
+    case '3':
+      return RPC.ROPSTEN.rpc;
+    case '4':
+      return RPC.RINKEBY.rpc;
+    case '5':
+      return RPC.GOERLI.rpc;
+    case '42':
+      return RPC.KOVAN.rpc;
+    case 'mainnet':
+      return RPC.MAINNET.rpc;
+    case 'ropsten':
+      return RPC.ROPSTEN.rpc;
+    case 'rinkeby':
+      return RPC.RINKEBY.rpc;
+    case 'goerli':
+      return RPC.GOERLI.rpc;
+    case 'kovan':
+      return RPC.KOVAN.rpc;
+    default:
+      return RPC.DEFAULT.rpc;
+  }
+}
+
+Net.getNetName = function (network) {
+  if (!network) network = '*';
+  else network = network.toString();
+  switch (network.toLowerCase()) {
+    case '1':
+      return RPC.MAINNET.name;
+    case '3':
+      return RPC.ROPSTEN.name;
+    case '4':
+      return RPC.RINKEBY.name;
+    case '5':
+      return RPC.GOERLI.name;
+    case '42':
+      return RPC.KOVAN.name;
+    case 'mainnet':
+      return RPC.MAINNET.name;
+    case 'ropsten':
+      return RPC.ROPSTEN.name;
+    case 'rinkeby':
+      return RPC.RINKEBY.name;
+    case 'goerli':
+      return RPC.GOERLI.name;
+    case 'kovan':
+      return RPC.KOVAN.name;
+    default:
+      return RPC.DEFAULT.name;
+  }
 }
 
 Net.isAddress = function (address) {

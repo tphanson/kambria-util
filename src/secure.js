@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 var ethUtil = require('ethereumjs-util');
 
-var Secure = function Secure() { };
+var Secure = function () { };
 
 Secure.rand = function (bits) {
   bits = bits ? bits : 256;

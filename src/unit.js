@@ -6,7 +6,7 @@ const KAT_DECIMALS = 18;
 const BNB_DECIMALS = 8;
 const BKAT_DECIMALS = 8;
 
-var Unit = function Unit() { };
+var Unit = function () { };
 
 Unit.wei2ETH = function (wkat) {
   if (!wkat) return 0;

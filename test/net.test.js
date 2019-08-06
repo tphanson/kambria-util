@@ -1,12 +1,6 @@
 var assert = require('assert');
 var kamUtil = require('../dist');
 
-const net1 = 1; // Result: ''
-const net2 = 4; // Result: 'rinkeby'
-const net3 = 'Ropsten'; // Result: 'ropsten'
-const net4 = 'Dummy'; // Result: ''
-const net5 = '42'; // Result: 'kovan'
-const net6 = '426'; // Result: ''
 const txTransfer = {
   data: '0xa9059cbb00000000000000000000000076d8b624efddd1e9fc4297f82a2689315ac62d820000000000000000000000000000000000000000000000000de0b6b3a7640000',
   from: '0x76d8b624efddd1e9fc4297f82a2689315ac62d82',
@@ -38,21 +32,44 @@ const fake_address = '0x27306090abaB3A6e1400e9345bC60c78a8BEf57';
 const _address = address.toLowerCase();
 
 describe('Net lib', function () {
+  describe('createClient()', function () {
+    it('create web3 instance', function () {
+      let web3 = kamUtil.net.createClient(4);
+      assert.notEqual(web3, null);
+    });
+  });
+
+  describe('getRPC()', function () {
+    it('get rpc of the network', function () {
+      let a = kamUtil.net.getRPC(1);
+      assert.equal(a, 'https://mainnet.infura.io/v3/55b8fc1234d845ffbea5da26f9ae70f5');
+      let b = kamUtil.net.getRPC(4);
+      assert.equal(b, 'https://rinkeby.infura.io/v3/55b8fc1234d845ffbea5da26f9ae70f5');
+      let c = kamUtil.net.getRPC('Ropsten');
+      assert.equal(c, 'https://ropsten.infura.io/v3/55b8fc1234d845ffbea5da26f9ae70f5');
+      let d = kamUtil.net.getRPC('Dummy');
+      assert.equal(d, 'http://localhost:9545');
+      let e = kamUtil.net.getRPC('42');
+      assert.equal(e, 'https://kovan.infura.io/v3/55b8fc1234d845ffbea5da26f9ae70f5');
+      let f = kamUtil.net.getRPC('426');
+      assert.equal(f, 'http://localhost:9545');
+    });
+  });
 
   describe('getNetName()', function () {
     it('get name of the network', function () {
-      let re1 = kamUtil.net.getNetName(net1);
-      assert.equal(re1, 'mainnet');
-      let re2 = kamUtil.net.getNetName(net2);
-      assert.equal(re2, 'rinkeby');
-      let re3 = kamUtil.net.getNetName(net3);
-      assert.equal(re3, 'ropsten');
-      let re4 = kamUtil.net.getNetName(net4);
-      assert.equal(re4, null);
-      let re5 = kamUtil.net.getNetName(net5);
-      assert.equal(re5, 'kovan');
-      let re6 = kamUtil.net.getNetName(net6);
-      assert.equal(re6, null);
+      let a = kamUtil.net.getNetName(1);
+      assert.equal(a, 'mainnet');
+      let b = kamUtil.net.getNetName(4);
+      assert.equal(b, 'rinkeby');
+      let c = kamUtil.net.getNetName('Ropsten');
+      assert.equal(c, 'ropsten');
+      let d = kamUtil.net.getNetName('Dummy');
+      assert.equal(d, 'privatenet');
+      let e = kamUtil.net.getNetName('42');
+      assert.equal(e, 'kovan');
+      let f = kamUtil.net.getNetName('426');
+      assert.equal(f, 'privatenet');
     });
   });
 
@@ -61,9 +78,7 @@ describe('Net lib', function () {
       let re = kamUtil.net.isAddress(address);
       assert.equal(re, true);
     });
-  });
 
-  describe('isAddress()', function () {
     it('false address', function () {
       let re = kamUtil.net.isAddress(fake_address);
       assert.equal(re, false);
