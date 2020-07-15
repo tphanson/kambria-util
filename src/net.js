@@ -104,7 +104,7 @@ Net.getNetName = function (network) {
 }
 
 Net.isAddress = function (address) {
-  return web3.isAddress(address);
+  return web3.utils.isAddress(address);
 }
 
 Net.formalizeAddress = function (address) {

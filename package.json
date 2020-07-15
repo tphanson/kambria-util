@@ -1,6 +1,6 @@
 {
   "name": "@kambria/kambria-util",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,10 @@
   "author": "Tu Phan",
   "license": "ISC",
   "dependencies": {
-    "ethereumjs-abi": "^0.6.7",
-    "ethereumjs-util": "^6.0.0",
-    "web3": "^0.20.7"
+    "bignumber.js": "^9.0.0",
+    "ethereumjs-abi": "^0.6.8",
+    "ethereumjs-util": "^7.0.3",
+    "web3": "^1.2.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

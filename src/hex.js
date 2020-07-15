@@ -1,11 +1,9 @@
-var Web3 = require('web3');
-var web3 = new Web3();
-
+var BigNumber = require('bignumber.js');
 
 var Hex = function () { };
 
 Hex.toBigNumber = function (hex) {
-  return web3.toBigNumber(hex);
+  return new BigNumber(hex);
 }
 
 Hex.padHex = function (hex) {
