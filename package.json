@@ -1,6 +1,6 @@
 {
   "name": "@kambria/kambria-util",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "bignumber.js": "^9.0.0",
     "ethereumjs-abi": "^0.6.8",
     "ethereumjs-util": "^7.0.3",
-    "web3": "^1.2.9"
+    "web3": "^1.2.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
